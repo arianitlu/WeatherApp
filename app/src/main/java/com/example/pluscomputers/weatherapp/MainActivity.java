@@ -1,9 +1,17 @@
 package com.example.pluscomputers.weatherapp;
 
+import android.Manifest;
+import android.location.Location;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.pluscomputers.weatherapp.utilities.GPStracker;
+
 public class MainActivity extends AppCompatActivity {
+
+    private double latitudeGps;
+    private double longitudeGps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         // MyWeatherAPI
 
-        //http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec6a2189bd7e486588b133648182410
-        // &q=Prizren&format=json&num_of_days=5&tp=12&showlocaltime=yes
     }
+
+    public void callGPS() {
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+
+        GPStracker g = new GPStracker(getApplication());
+        Location l = g.getLocation();
+
+        if (l != null) {
+            latitudeGps = l.getLatitude();
+            longitudeGps = l.getLongitude();
+        }
+
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.pluscomputers.weatherapp;
+package com.example.pluscomputers.weatherapp.utilities;
 
 
 import android.Manifest;
