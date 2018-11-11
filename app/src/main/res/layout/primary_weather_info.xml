@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
         <android.support.constraint.Guideline
             android:id="@+id/horizontal_middle"
@@ -26,7 +25,7 @@
             app:layout_constraintBottom_toTopOf="@+id/weather_icon"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            tools:text="Saturday, September 24"/>
+            android:text="Saturday, September 24"/>
 
         <!-- Icon indicating weather condition -->
         <ImageView
@@ -38,7 +37,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/horizontal_middle"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/art_clouds"/>
+            android:src="@drawable/art_clouds"/>
 
         <!-- Text that describes weather condition -->
         <TextView
@@ -52,7 +51,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/weather_icon"
             app:layout_constraintRight_toRightOf="@+id/weather_icon"
             app:layout_constraintTop_toBottomOf="@+id/weather_icon"
-            tools:text="Rainy"/>
+            android:text="Rainy"/>
 
         <TextView
             android:id="@+id/high_temperature"
@@ -66,7 +65,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/horizontal_middle"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/weather_icon"
-            tools:text="19\u00b0"/>
+            android:text="19\u00b0"/>
 
         <TextView
             android:id="@+id/low_temperature"
@@ -78,7 +77,6 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/weather_description"
             app:layout_constraintLeft_toLeftOf="@+id/high_temperature"
             app:layout_constraintRight_toRightOf="@+id/high_temperature"
-            tools:text="10\u00b0"/>
+            android:text="10\u00b0"/>
 
     </android.support.constraint.ConstraintLayout>
-</layout>

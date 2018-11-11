@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:src="@drawable/art_clouds"/>
+        android:src="@drawable/art_clouds"/>
 
     <TextView
         android:id="@+id/date"
@@ -31,7 +31,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toRightOf="@+id/weather_icon"
-        tools:text="Today, April 03"/>
+        android:text="Today, April 03"/>
 
     <TextView
         android:id="@+id/weather_description"
@@ -41,7 +41,7 @@
         android:textColor="@color/secondary_text"
         app:layout_constraintLeft_toLeftOf="@+id/date"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="Rainy"/>
+        android:text="Rainy"/>
 
     <TextView
         android:id="@+id/high_temperature"
@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintRight_toLeftOf="@+id/low_temperature"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="19\u00b0"/>
+        android:text="19\u00b0"/>
 
     <TextView
         android:id="@+id/low_temperature"
@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="10\u00b0"/>
+        android:text="10\u00b0"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

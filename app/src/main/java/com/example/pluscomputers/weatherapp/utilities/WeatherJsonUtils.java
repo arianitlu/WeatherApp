@@ -1,6 +1,9 @@
 package com.example.pluscomputers.weatherapp.utilities;
 
+import android.util.Log;
+
 import com.example.pluscomputers.weatherapp.model.Weather;
+import com.example.pluscomputers.weatherapp.model.Days;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,37 +14,81 @@ import java.util.List;
 
 public class WeatherJsonUtils {
 
-    public static List<Weather> extractMovies(String responseJson) throws JSONException {
+    private static ArrayList<Days> listDays = new ArrayList<>();
 
-        List<Weather> movies = new ArrayList<>();
+    public static Weather getWeather(String response) {
 
-        JSONObject responseObj = new JSONObject(responseJson);
+        try {
+            JSONObject rootObj = new JSONObject(response);
+            JSONObject dataObj = rootObj.getJSONObject("data");
 
-            JSONArray movieArray = responseObj.getJSONArray("results");
+            //time_zone
+            JSONArray time_zoneArray = dataObj.getJSONArray("time_zone");
+            JSONObject time_zoneObj = time_zoneArray.getJSONObject(0);
+            String localTime = time_zoneObj.getString("localtime");
 
-            for (int i = 0; i < movieArray.length(); i++) {
-                JSONObject movieObj = movieArray.getJSONObject(i);
+            //current_condition
+            JSONArray current_conditionArray = dataObj.getJSONArray("current_condition");
+            JSONObject current_conditionObj = current_conditionArray.getJSONObject(0);
+            String tempC = current_conditionObj.getString("temp_C");
 
-                Weather movie = extractMovie(movieObj);
+            JSONArray weatherIconUrlArray = current_conditionObj.getJSONArray("weatherIconUrl");
+            JSONObject weatherIconUrlObj = weatherIconUrlArray.getJSONObject(0);
+            String weatherIconUrl = weatherIconUrlObj.getString("value");
 
-                movies.add(movie);
+            JSONArray weatherDescArray = current_conditionObj.getJSONArray("weatherDesc");
+            JSONObject weatherDescObj = weatherDescArray.getJSONObject(0);
+            String weatherDesc = weatherDescObj.getString("value");
+
+            String windSpeedKmph = current_conditionObj.getString("windspeedKmph");
+
+            String humidity = current_conditionObj.getString("humidity");
+            String pressure = current_conditionObj.getString("pressure");
+            String feelsLikeC = current_conditionObj.getString("FeelsLikeC");
+
+            // weather
+            JSONArray weatherArray = dataObj.getJSONArray("weather");
+            for (int i=1 ; i<weatherArray.length() ; i++){
+                JSONObject weatherObj = weatherArray.getJSONObject(i);
+
+                String date = weatherObj.getString("date");
+                String maxTemp = weatherObj.getString("maxTempC");
+                String minTemp = weatherObj.getString("minTempC");
+
+                // hourly
+                JSONArray hourlyArray = weatherObj.getJSONArray("hourly");
+                JSONObject hourlyObj = hourlyArray.getJSONObject(4);
+
+                JSONArray weatherIconUrlHourlyArray = hourlyObj.getJSONArray("weatherIconUrl");
+                JSONObject weatherIconUrlHourlyObj = weatherIconUrlHourlyArray.getJSONObject(0);
+                String weatherIconHourlyUrl = weatherIconUrlHourlyObj.getString("value");
+
+                JSONArray weatherDescHourlyArray = hourlyObj.getJSONArray("weatherDesc");
+                JSONObject weatherDescHurlyObj = weatherDescHourlyArray.getJSONObject(0);
+                String weatherHourlyDesc = weatherDescHurlyObj.getString("value");
+
+                String humidityHourly = hourlyObj.getString("humidity");
+                String pressureHourly = hourlyObj.getString("pressure");
+                //String windHourly = hourlyObj.getString("WindGustKmph");
+                String chanceOfRainHourly = hourlyObj.getString("chanceofrain");
+
+                Days days = new Days(date,maxTemp,minTemp,weatherIconHourlyUrl,weatherHourlyDesc,
+                        humidityHourly,pressureHourly,chanceOfRainHourly);
+
+                listDays.add(days);
+
+
+            }
+            Weather weather = new Weather(localTime,tempC,weatherIconUrl,weatherDesc,
+                    windSpeedKmph,humidity,pressure,feelsLikeC,listDays);
+
+            return weather;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        return movies;
-    }
+        return null;
 
-    public static Weather extractMovie(JSONObject movieObj) throws JSONException {
-
-        long id = movieObj.getLong("id");
-        String title = movieObj.getString("title");
-        String originalTitle = movieObj.getString("original_title");
-        String overview = movieObj.getString("overview");
-        String posterPath = movieObj.getString("poster_path");
-        double rating = movieObj.getInt("vote_average");
-        String releaseDate = movieObj.getString("release_date");
-
-        Weather movie = new Weather();
-
-        return movie;
     }
 }
