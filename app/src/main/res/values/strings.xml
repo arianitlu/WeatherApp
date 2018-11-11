@@ -3,4 +3,25 @@
     <string name="humidity_label">Humidity</string>
     <string name="pressure_label">Pressure</string>
     <string name="wind_label">Wind</string>
+
+    <!-- Key name for storing location in SharedPreferences -->
+
+    <string name="pref_location_label">Location</string>
+
+    <string name="pref_location_key" translatable="false">location</string>
+
+    <string name="pref_location_default" translatable="false">Prishtina</string>
+
+    <string name="pref_units_label">Temperature Units</string>
+
+    <string name="pref_units_label_celsius">Celsius</string>
+
+    <string name="pref_units_label_fahrenheit">Fahrenheit</string>
+
+    <string name="pref_units_key" translatable="false">units</string>
+
+    <string name="pref_units_celsius" translatable="false">celsius</string>
+
+    <string name="pref_units_fahrenheit" translatable="false">fahrenheit</string>
+
 </resources>

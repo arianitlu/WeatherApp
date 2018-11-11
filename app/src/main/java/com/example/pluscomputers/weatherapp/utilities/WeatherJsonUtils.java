@@ -52,8 +52,8 @@ public class WeatherJsonUtils {
                 JSONObject weatherObj = weatherArray.getJSONObject(i);
 
                 String date = weatherObj.getString("date");
-                String maxTemp = weatherObj.getString("maxTempC");
-                String minTemp = weatherObj.getString("minTempC");
+                String maxTemp = weatherObj.getString("maxtempC");
+                String minTemp = weatherObj.getString("mintempC");
 
                 // hourly
                 JSONArray hourlyArray = weatherObj.getJSONArray("hourly");

@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.example.pluscomputers.weatherapp.DetailActivity;
 import com.example.pluscomputers.weatherapp.R;
 import com.example.pluscomputers.weatherapp.model.Days;
+import com.example.pluscomputers.weatherapp.utilities.WeatherUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -72,22 +74,19 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(WeatherAdapter.MyViewHolder holder, int position) {
-        Days lajmi = mDaysList.get(position);
+        Days day = mDaysList.get(position);
 
-        holder.date.setText(lajmi.getDate());
-        holder.weatherDesc.setText(lajmi.getWeatherHourlyDesc());
-        holder.highTemperature.setText(lajmi.getMaxTempC());
-        holder.lowTemperature.setText(lajmi.getMinTempC());
+        holder.date.setText(WeatherUtils.formatDateForAdapter(day.getDate()));
+        holder.weatherDesc.setText(day.getWeatherHourlyDesc());
+        holder.highTemperature.setText(day.getMaxTempC()  + "\u00b0");
+        holder.lowTemperature.setText(day.getMinTempC() + "\u00b0");
 
-        holder.weatherIcon.setImageResource(R.drawable.art_clear);
-//        Picasso.get()
-//                .load(lajmi.getImage())
-//                //.placeholder(R.drawable.news_photo1)
-//                //.error(R.drawable.news_photo1)
-//                .into(holder.mImage);
+        Picasso.get()
+                .load(day.getWeatherIconHourlyUrl())
+                .into(holder.weatherIcon);
     }
 
-    public void setLajmi(List<Days> lajmiList) {
+    public void setWeatherList(List<Days> lajmiList) {
         this.mDaysList = lajmiList;
         notifyDataSetChanged();
     }

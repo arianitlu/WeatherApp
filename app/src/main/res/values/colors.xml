@@ -14,6 +14,6 @@
     <color name="detail_accent_pane_background">#455A64</color>
     <color name="detail_accent_label">#90A4AE</color>
 
-    <!-- the activated state color for a forecast list item -->
+    <!-- the activated state color for a weather list item -->
     <color name="activated">#E0E0E0</color>
 </resources>
