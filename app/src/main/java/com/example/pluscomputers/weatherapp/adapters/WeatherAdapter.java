@@ -49,16 +49,19 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
 
             int position = getAdapterPosition();
 
-            Days lajmi = mDaysList.get(position);
+            Days day = mDaysList.get(position);
 
             Intent intent = new Intent(ctx, DetailActivity.class);
-//
-//            intent.putExtra("title", lajmi.getTitle());
-//            intent.putExtra("category", lajmi.getCategory());
-//            intent.putExtra("image", lajmi.getImage());
-//            intent.putExtra("color",lajmi.getColor());
-//            intent.putExtra("description",lajmi.getDescription());
-//
+
+            intent.putExtra("date", day.getDate());
+            intent.putExtra("icon", day.getWeatherIconHourlyUrl());
+            intent.putExtra("maxTempC", day.getMaxTempC());
+            intent.putExtra("minTempC",day.getMinTempC());
+            intent.putExtra("weatherDesc",day.getWeatherHourlyDesc());
+            intent.putExtra("humidity",day.getHumidity());
+            intent.putExtra("pressure",day.getPressure());
+            intent.putExtra("chanceOfRain",day.getChanceOfRain());
+
             ctx.startActivity(intent);
         }
     }

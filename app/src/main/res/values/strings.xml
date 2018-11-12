@@ -2,7 +2,7 @@
     <string name="app_name">Weather</string>
     <string name="humidity_label">Humidity</string>
     <string name="pressure_label">Pressure</string>
-    <string name="wind_label">Wind</string>
+    <string name="wind_label">Chance of Rain</string>
 
     <!-- Key name for storing location in SharedPreferences -->
 
