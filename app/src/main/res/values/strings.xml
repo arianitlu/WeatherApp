@@ -10,7 +10,7 @@
 
     <string name="pref_location_key" translatable="false">location</string>
 
-    <string name="pref_location_default" translatable="false">Prishtina</string>
+    <string name="pref_location_default" translatable="false">Prizren</string>
 
     <string name="pref_units_label">Temperature Units</string>
 

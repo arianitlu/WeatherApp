@@ -3,12 +3,12 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
 
-    <EditTextPreference
-        android:defaultValue="@string/pref_location_default"
-        android:inputType="text"
+    <ListPreference
+        android:defaultValue="Prizren"
+        android:entries="@array/pref_location_options"
+        android:entryValues="@array/pref_location_values"
         android:key="@string/pref_location_key"
-        android:singleLine="true"
-        android:title="@string/pref_location_label" />
+        android:title="Location" />
 
     <ListPreference
         android:defaultValue="@string/pref_units_celsius"
@@ -16,12 +16,5 @@
         android:entryValues="@array/pref_units_values"
         android:key="@string/pref_units_key"
         android:title="@string/pref_units_label" />
-
-    <!--<CheckBoxPreference-->
-        <!--android:defaultValue="@bool/show_notifications_by_default"-->
-        <!--android:key="@string/pref_enable_notifications_key"-->
-        <!--android:summaryOff="@string/pref_enable_notifications_false"-->
-        <!--android:summaryOn="@string/pref_enable_notifications_true"-->
-        <!--android:title="@string/pref_enable_notifications_label" />-->
 
 </PreferenceScreen>

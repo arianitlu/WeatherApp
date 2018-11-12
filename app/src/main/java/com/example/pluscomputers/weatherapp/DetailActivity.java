@@ -29,8 +29,9 @@ public class DetailActivity extends AppCompatActivity {
         chanceOfRaintxt = findViewById(R.id.wind_measurement);
         iconUrlImg = findViewById(R.id.weather_icon);
 
+        // Marrja e te dhenave pas klikimit te nje item ne listen tone te avancuar
+        // dhe ruajtja e vlerave te tyre
         Intent intent = getIntent();
-
         String date = intent.getStringExtra("date");
         String iconUrl = intent.getStringExtra("icon");
         String maxTempC = intent.getStringExtra("maxTempC");
@@ -40,6 +41,7 @@ public class DetailActivity extends AppCompatActivity {
         String pressure = intent.getStringExtra("pressure");
         String chanceOfRain = intent.getStringExtra("chanceOfRain");
 
+        // Paraqitja ne aktivitetin tone te dhenat e marrura
         dateTxt.setText(WeatherUtils.formatDateForAdapter(date));
         Picasso.get()
                 .load(iconUrl)

@@ -35,6 +35,12 @@ public final class  NetworkUtils {
     private static final String LOCAL_TIME = "showlocaltime";
     private static final String localTimeKey = "yes";
 
+    /**
+     *
+     * @param city Japim qytetin si parameter ne varesi se ku deshirojme te formojme nje URL per motin
+     * @return  Na kthen nje URL te ndertuar ne baze te qytetit qe deshirojme , URL(API) qe mban te gjitha te dhenat
+     * e motit ne formatin JSON
+     */
     public static URL buildWeatherCityUrl(String city) {
         Uri builtUri = Uri.parse(WEATHER_BASE_URL).buildUpon()
                 .appendQueryParameter(API_KEY_PARAM, apiKey)
@@ -53,6 +59,14 @@ public final class  NetworkUtils {
         Log.v(TAG, "Build weather city URI: " + url);
         return url;
     }
+
+    /**
+     *
+     * @param latitude Si parameter te pare merr gjatesine
+     * @param longitude Si parameter te dyte merr gjeresine
+     * @return Na kthen URL ne formatin perkates me koordinatat e caktuar , URL qe do te kete te dhena per motin
+     * formatin JSON
+     */
     public static URL buildWeatherGpsUrl(long latitude,long longitude) {
         Uri builtUri = Uri.parse(WEATHER_BASE_URL).buildUpon()
                 .appendQueryParameter(API_KEY_PARAM, apiKey)
@@ -71,6 +85,14 @@ public final class  NetworkUtils {
         Log.v(TAG, "Build weather gps URI: " + url);
         return url;
     }
+
+    /**
+     *
+     * @param url Si paremeter hyres do te jete URL e krijuar me pare ose me qytet ose me GPS(koordinata)
+     * @return   Na kthen nje String e cila permban te gjitha te dhenat ne formatin JSON ne menyre qe ne te mund
+     * te bejme parsimin dhe te marrim fushat e caktuara per motin
+     * @throws IOException Nese nuk ka internet per te marre te dhenat
+     */
 
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();

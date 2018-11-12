@@ -17,15 +17,23 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * Implementimi i adapterit i cili do te mbaje dhe populloje view-sat e ndryshem qe kemi
+ * ne aplikacion. Eshte nje liste e avancuar perkatesisht recyclerView.
+ */
+
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHolder>{
 
+    // Lista me dite e cila merret nga API
     private List<Days> mDaysList;
     private Context ctx;
 
+    // Konstruktori adapterit
     public WeatherAdapter(Context ctx) {
         this.ctx = ctx;
     }
 
+    // ViewHolder i cili do te mbaje view-at e ndryshem
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView date,weatherDesc,highTemperature,lowTemperature;
@@ -43,6 +51,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
 
             weatherIcon = itemView.findViewById(R.id.weather_icon);
         }
+
+        /**
+         *
+         * Implementimi i interface(listenerit) i cili do te mundsojme klimin ne nje view te
+         * caktuar , perkatesisht ne nje dite te caktuar dhe te shfaqe te dhena shtese.
+         */
 
         @Override
         public void onClick(View v) {
@@ -66,6 +80,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
         }
     }
 
+    // Perkthimi nga view ne java code me metoden layoutInflater. Ketu krijohet nje itemview i
+    // adapterit dhe merr modelin qe e kemi krijuar , perkatesisht (forecast_list_item)
     @Override
     public WeatherAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -75,6 +91,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
         return new WeatherAdapter.MyViewHolder(itemView);
     }
 
+    // Popullimi me te dhena i listes tone
     @Override
     public void onBindViewHolder(WeatherAdapter.MyViewHolder holder, int position) {
         Days day = mDaysList.get(position);
@@ -89,11 +106,19 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
                 .into(holder.weatherIcon);
     }
 
-    public void setWeatherList(List<Days> lajmiList) {
-        this.mDaysList = lajmiList;
+    /**
+     *
+     * @param daysList - lista me ditet e kalendarit e mbushur me te dhena per motin
+     */
+    public void setWeatherList(List<Days> daysList) {
+        this.mDaysList = daysList;
         notifyDataSetChanged();
     }
 
+    /**
+     *
+     * @return na e kthen numrin e anetareve ne listen tone
+     */
     @Override
     public int getItemCount() {
         if(mDaysList == null)
